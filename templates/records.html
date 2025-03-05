@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Records</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        table { width: 90%; margin: 20px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid black; }
+        th { background-color: #f2f2f2; }
+        .delete-btn { background-color: red; color: white; padding: 5px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>All Transfusion Records</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>MRN</th>
+            <th>Date</th>
+            <th>Start Hct</th>
+            <th>End Hct</th>
+            <th>ΔHct</th>
+            <th>Coeff</th>
+            <th>Weight</th>
+            <th>Volume</th>
+            <th>Delete</th>
+        </tr>
+        {% for record in records %}
+        <tr>
+            <td>{{ record[0] }}</td>
+            <td>{{ record[1] }}</td>
+            <td>{{ record[2] }}</td>
+            <td>{{ record[3] }}</td>
+            <td>{{ record[4] }}</td>
+            <td>{{ record[5] }}</td>
+            <td>{{ record[6] }}</td>
+            <td>{{ record[7] }}</td>
+            <td>{{ record[8] }}</td>
+            <td>
+                <a href="{{ url_for('delete_record', record_id=record[0]) }}">
+                    <button class="delete-btn">Delete</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('index') }}">
+        <button>Back to Calculator</button>
+    </a>
+
+</body>
+</html>
