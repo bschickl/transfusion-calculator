@@ -1,4 +1,3 @@
 Flask
 gunicorn
 waitress
-sqlite3
